@@ -3,7 +3,8 @@ import React from "react";
 import tw from "twrnc";
 import { SafeAreaView } from "react-native";
 import NavOptions from "../components/NavOptions";
-
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { GOOGLE_MAP_APIKEY } from "@env";
 const HomeScreen = () => {
   return (
     <SafeAreaView style={tw`bg-white w-full p-5`}>
@@ -18,8 +19,25 @@ const HomeScreen = () => {
             uri: "https://links.papareact.com/gzs",
           }}
         />
+        <GooglePlacesAutocomplete
+          nearbyPlacesAPI="GooglePlacesSearch"
+          debounce={400}
+          placeholder="Where from?"
+          styles={{
+            container: {
+              flex: 0,
+            },
+            textInput:{
+                fontSize:18
+            }
+          }}
+          query={{
+            key: GOOGLE_MAP_APIKEY,
+            language: "en",
+          }}
+        />
       </View>
-      <NavOptions/>
+      <NavOptions />
     </SafeAreaView>
   );
 };

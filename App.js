@@ -6,23 +6,30 @@ import { store } from "./store";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import MapScreen from "./screens/MapScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <Provider store={store}>
-        <NavigationContainer>
-      <SafeAreaProvider>
+      <NavigationContainer>
+        <SafeAreaProvider>
           <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MapScreen"
+            component={MapScreen}
+            options={{ headerShown: false }}
+          />
           </Stack.Navigator>
-          {/* <View style={styles.container}>
-            <HomeScreen />
-            <StatusBar style="auto" />
-          </View> */}
-      </SafeAreaProvider>
-        </NavigationContainer>
+          
+        </SafeAreaProvider>
+      </NavigationContainer>
     </Provider>
   );
 }
